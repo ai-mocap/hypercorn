@@ -58,7 +58,6 @@ def run_multiple(config: Config, worker_func: WorkerFunc) -> None:
             target=worker_func,
             kwargs={"config": config, "shutdown_event": shutdown_event, "sockets": sockets},
         )
-        process.daemon = True
         process.start()
         processes.append(process)
         if platform.system() == "Windows":
